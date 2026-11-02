@@ -87,7 +87,7 @@ def test_invalid_grade_is_rejected(client, value):
     assert "zwischen 1.0 und 6.0" in response.get_data(as_text=True)
 
 
-@pytest.mark.parametrize("weight", ["0", "-1", "abc", "", "inf"])
+@pytest.mark.parametrize("weight", ["0", "-1", "abc", "", "nan", "inf"])
 def test_invalid_weight_is_rejected(client, weight):
     subject = add_subject()
     response = client.post(
