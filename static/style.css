@@ -1,6 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f1f5f9;
+  color: #172b3a;
+}
+
 body {
   margin: 0 auto;
-  max-width: 48rem;
+  max-width: 56rem;
   padding: 1rem;
   font-family: system-ui, sans-serif;
   line-height: 1.5;
@@ -12,10 +21,143 @@ header {
   gap: 1rem;
   justify-content: space-between;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ccc;
+  align-items: center;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+header strong {
+  font-size: 1.35rem;
 }
 
 nav {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+a {
+  color: #075985;
+  text-underline-offset: 0.2em;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.65rem;
+  border-radius: 0.4rem;
+}
+
+a:hover {
+  color: #0c4a6e;
+  background: #e0f2fe;
+}
+
+main {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin-top: 0;
+  line-height: 1.2;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-block: 1rem;
+}
+
+form > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+}
+
+input, select, textarea, button {
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem;
+  border: 1px solid #64748b;
+  border-radius: 0.35rem;
+  font: inherit;
+}
+
+input, select, textarea {
+  background: white;
+  color: #172b3a;
+}
+
+button {
+  background: #075985;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0c4a6e;
+}
+
+:focus-visible {
+  outline: 3px solid #9a3412;
+  outline-offset: 3px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-block: 1rem;
+}
+
+th, td {
+  padding: 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid #cbd5e1;
+  overflow-wrap: anywhere;
+}
+
+th {
+  background: #e2e8f0;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-block: 0.5rem;
+}
+
+@media (max-width: 32rem) {
+  body {
+    padding: 0.75rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input, select, textarea, button {
+    width: 100%;
+  }
+
+  th, td {
+    padding: 0.4rem;
+  }
 }
