@@ -14,6 +14,7 @@ LB Modul 324 von Kaito, Faruk und Laurentiu.
 
 Unser [Werkzeugvergleich](docs/werkzeugvergleich.md) erklärt die Begriffe
 und warum wir GitHub Issues für dieses Projekt empfehlen.
+[Die Abgabeübersicht](docs/abgabe.md) verlinkt die Nachweise zu den Bewertungskriterien.
 
 ## Lokal starten
 
