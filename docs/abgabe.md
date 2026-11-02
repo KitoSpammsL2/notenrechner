@@ -109,8 +109,12 @@ Die endgültige Version ist [`1.0.0`](https://github.com/KitoSpammsL2/notenrechn
 [Workflow-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401) sind Tests, Azure, Release
 und Docker beim ersten Versuch erfolgreich. Das [Image](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner)
 ist als `1.0.0` und `latest` abrufbar. In der [App](https://notenrechner-lb324.azurewebsites.net) haben wir danach
-ein Fach mit zwei gewichteten Noten erfasst. Schnitt und CSV-Export zeigen die
-erwarteten Werte. Dieses Beispielfach bleibt in der App sichtbar.
+das Fach Mathematik mit den Noten 5.0 (Gewicht 1) und 4.0 (Gewicht 2) erfasst.
+Der Schnitt zeigte wie erwartet 4.5 (rechnerisch 4.33, auf halbe Noten gerundet),
+der Gesamtschnitt 4.50, und der CSV-Export enthielt beide Noten. Die App ist
+öffentlich und hat keine Anmeldung, darum können dort seither weitere Einträge
+dazugekommen sein. Denselben Ablauf prüft automatisch der
+[Integrationstest](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_integration.py).
 
 Diese Übersicht kam erst nach dem Tag `1.0.0` in `main`. Der Code der App hat
 sich dadurch nicht geändert.
