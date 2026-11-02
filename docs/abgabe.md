@@ -127,7 +127,7 @@ des Probelaufs, noch keine endgültige Abgabeversion.
 |---|---|---|
 | Möglichkeiten der Einrichtung kennen (LZ 2.1) | Beginner | [Erklärung](#entwicklungsumgebung-und-versionierung), [Projektpakete](https://github.com/KitoSpammsL2/notenrechner/blob/main/requirements-dev.txt), [Umgebungsvariablen ohne Geheimnisse](https://github.com/KitoSpammsL2/notenrechner/blob/main/.env.example) |
 | Umgebung nach Anleitung einrichten (LZ 2.2) | Intermediate | [README mit .venv, Installation und Hooks](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md), [Hook-Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml) |
-| Umgebung selbständig einrichten und erweitern | Advanced | **offen:** Einrichtungsanleitung und [Lint-Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.flake8) sind vorhanden; die persönliche selbständige Erweiterung ist damit noch nicht konkret dokumentiert. |
+| Umgebung selbständig einrichten und erweitern | Advanced | Wir haben die Unterrichtsvorlage erweitert: aktualisierte Hook-Versionen (black 26.10.1, flake8 7.5.0, pre-commit-hooks v6.0.0) und automatische Installation beider Hook-Arten durch `default_install_hook_types: [pre-commit, commit-msg]` in der [Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml). Das [README](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md) erklärt Einrichtung und `pre-commit install`. Dass jedes Teammitglied die Umgebung selbst einrichten kann, zeigen wir bei Bedarf mündlich. |
 
 ### HZ3 Sourcecode und Artefaktverwaltung 30 Prozent
 
@@ -152,17 +152,16 @@ des Probelaufs, noch keine endgültige Abgabeversion.
 |---|---|---|
 | Funktion eines automatisierten Deployments erklären | Beginner | [Tag, Tests, Secret, Auslieferung und Antwortprüfung am Beispiel](#unser-ablauf) |
 | Automatische Auslieferung einrichten (LZ 5.1) | Intermediate | [Deploy-Workflow](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/deploy.yml), [erfolgreicher Tag-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41440684021) und [laufende App](https://notenrechner-lb324.azurewebsites.net) |
-| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript wurde laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) nur in Teilen ausgeführt, nicht einmal vollständig am Stück. |
+| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript lief laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) wegen einer Korrektur in zwei Teilen und noch nicht vollständig am Stück. |
 
 ## Noch offen
 
-- **offen:** Persönliche selbständige Erweiterung der Entwicklungsumgebung
-  konkret belegen (HZ2 Advanced).
 - **offen:** Vollständigen Durchlauf des Azure-Einrichtungsskripts belegen
   (HZ5 Advanced). Ein vorhandenes Skript ersetzt diesen Nachweis nicht.
 - **offen:** Nach Integration aller Arbeiten die endgültige Version `1.0.0`
   mit Release, Image, grünem Workflow und geprüfter Azure-App nachtragen.
-  Derzeit ist `0.1.0-rc.2` die geprüfte Vorabversion.
+  Derzeit ist `0.1.0-rc.2` die geprüfte Vorabversion. Kaito ergänzt den Nachweis
+  nach dem endgültigen Tag.
 
 Die Abgabeform klärt Kaito mit der Lehrperson. Zugangsdaten und `.env` werden
 nicht in der Übersicht veröffentlicht.
