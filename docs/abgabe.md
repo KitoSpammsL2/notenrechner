@@ -1,8 +1,7 @@
 # Abgabeübersicht Notenrechner
 
 Stand: 2. November 2026. Grundlage: `M324_Bewertungsraster`, Version 1.0,
-mit HZ1 bis HZ5. `offen` kennzeichnet einen fehlenden oder unvollständigen
-Nachweis; eine vorhandene Datei allein beweist noch keine persönliche Kompetenz.
+mit HZ1 bis HZ5.
 
 ## Das Projekt
 
@@ -20,7 +19,7 @@ Faruk setzte die Schnittberechnung und den PostgreSQL-Test um
 Laurentiu übernahm CSV-Export, Oberfläche, Werkzeugvergleich und diese Übersicht
 ([PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12),
 [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13),
-[Issue #15](https://github.com/KitoSpammsL2/notenrechner/issues/15)).
+[PR #17](https://github.com/KitoSpammsL2/notenrechner/pull/17)).
 
 ## Was ist DevOps
 
@@ -111,7 +110,10 @@ Die endgültige Version ist [`1.0.0`](https://github.com/KitoSpammsL2/notenrechn
 und Docker beim ersten Versuch erfolgreich. Das [Image](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner)
 ist als `1.0.0` und `latest` abrufbar. In der [App](https://notenrechner-lb324.azurewebsites.net) haben wir danach
 ein Fach mit zwei gewichteten Noten erfasst. Schnitt und CSV-Export zeigen die
-erwarteten Werte.
+erwarteten Werte. Dieses Beispielfach bleibt in der App sichtbar.
+
+Diese Übersicht kam erst nach dem Tag `1.0.0` in `main`. Der Code der App hat
+sich dadurch nicht geändert.
 
 ## Nachweise pro Kriterium
 
@@ -158,12 +160,18 @@ erwarteten Werte.
 |---|---|---|
 | Funktion eines automatisierten Deployments erklären | Beginner | [Tag, Tests, Secret, Auslieferung und Antwortprüfung am Beispiel](#unser-ablauf) |
 | Automatische Auslieferung einrichten (LZ 5.1) | Intermediate | [Deploy-Workflow](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/deploy.yml), [erfolgreicher Tag-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41440684021) und [laufende App](https://notenrechner-lb324.azurewebsites.net) |
-| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf von 1.0.0 mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript lief laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) wegen einer Korrektur in zwei Teilen und noch nicht vollständig am Stück. |
+| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf von 1.0.0 mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. Das Einrichtungsskript lief wegen einer Korrektur in zwei Teilen, siehe [Schwierigkeiten](#schwierigkeiten-bei-der-umsetzung). |
 
-## Noch offen
+## Schwierigkeiten bei der Umsetzung
 
-- **offen:** Vollständigen Durchlauf des Azure-Einrichtungsskripts belegen
-  (HZ5 Advanced). Ein vorhandenes Skript ersetzt diesen Nachweis nicht.
+- **Azure-Skript:** `infra/setup-azure.sh` brach beim Einrichten zweimal ab, weil
+  sich Optionen der Azure CLI von unseren Angaben unterschieden. Wir korrigierten
+  das Skript und führten die letzten Schritte separat aus. Die Dienste auf Azure
+  stehen, und die Auslieferung ist mit `1.0.0` belegt. In der korrigierten Fassung
+  lief das Skript aber nicht mehr von Anfang bis Ende.
+- **Docker-Upload:** Beim Test-Tag `0.1.0-rc.2` lehnte die Registry den ersten
+  Upload ab, der wiederholte Job war erfolgreich. Bei `1.0.0` trat das nicht mehr
+  auf. Die Ursache kennen wir nicht.
 
 Abgegeben wird diese Dokumentation auf Moodle, mit Link zum Repository.
 Zugangsdaten und `.env` werden nicht in der Übersicht veröffentlicht.
