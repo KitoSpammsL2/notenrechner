@@ -104,8 +104,14 @@ Im [Workflow-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/414
 sind Tests, Azure, Release und Docker erfolgreich. Das Image wurde gebaut,
 gestartet und vor dem Upload per HTTP geprüft. Der erste Registry-Upload wurde
 abgewiesen; der wiederholte Job war erfolgreich. Die Ursache ist noch ungeklärt.
-PR #14 ist inzwischen in main integriert. Die Vorabversion ist ein Nachweis
-des Probelaufs, noch keine endgültige Abgabeversion.
+PR #14 ist inzwischen in main integriert. Die Vorabversion war der Probelauf.
+
+Die endgültige Version ist [`1.0.0`](https://github.com/KitoSpammsL2/notenrechner/releases/tag/1.0.0). Im
+[Workflow-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401) sind Tests, Azure, Release
+und Docker beim ersten Versuch erfolgreich. Das [Image](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner)
+ist als `1.0.0` und `latest` abrufbar. In der [App](https://notenrechner-lb324.azurewebsites.net) haben wir danach
+ein Fach mit zwei gewichteten Noten erfasst. Schnitt und CSV-Export zeigen die
+erwarteten Werte.
 
 ## Nachweise pro Kriterium
 
@@ -136,7 +142,7 @@ des Probelaufs, noch keine endgültige Abgabeversion.
 | Werkzeuge der Versionierung kennen (LZ 3.1) | Beginner | [Git, Subversion, GitHub und Artefaktablage erklärt](#entwicklungsumgebung-und-versionierung) |
 | Einen Ablauf für Änderungen beschreiben (LZ 3.2) | Intermediate | [Unser Ablauf](#unser-ablauf) und [README](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md) |
 | Dem Ablauf bei eigenen Änderungen folgen (LZ 3.3) | Intermediate | Laurentius [PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12) und [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13) mit Commits, fremdem Review und Merge; eigenes Review in [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11#pullrequestreview-5736182346) |
-| Artefakte mit Sourcecodeverwaltung anwenden (LZ 3.4) | Advanced | [Release 0.1.0-rc.2](https://github.com/KitoSpammsL2/notenrechner/releases/tag/0.1.0-rc.2), [GHCR-Paket](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner) und [erfolgreicher Build, Containercheck und Upload](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066). Die Umsetzung aus [Issue #8](https://github.com/KitoSpammsL2/notenrechner/issues/8) ist über [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) in main integriert. |
+| Artefakte mit Sourcecodeverwaltung anwenden (LZ 3.4) | Advanced | [Release 1.0.0](https://github.com/KitoSpammsL2/notenrechner/releases/tag/1.0.0), [Vorabversion 0.1.0-rc.2](https://github.com/KitoSpammsL2/notenrechner/releases/tag/0.1.0-rc.2), [GHCR-Paket](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner) und [erfolgreicher Build, Containercheck und Upload](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401). Die Umsetzung aus [Issue #8](https://github.com/KitoSpammsL2/notenrechner/issues/8) ist über [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) in main integriert. |
 
 ### HZ4 Automatisierte Integration 20 Prozent
 
@@ -152,16 +158,12 @@ des Probelaufs, noch keine endgültige Abgabeversion.
 |---|---|---|
 | Funktion eines automatisierten Deployments erklären | Beginner | [Tag, Tests, Secret, Auslieferung und Antwortprüfung am Beispiel](#unser-ablauf) |
 | Automatische Auslieferung einrichten (LZ 5.1) | Intermediate | [Deploy-Workflow](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/deploy.yml), [erfolgreicher Tag-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41440684021) und [laufende App](https://notenrechner-lb324.azurewebsites.net) |
-| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript lief laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) wegen einer Korrektur in zwei Teilen und noch nicht vollständig am Stück. |
+| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf von 1.0.0 mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript lief laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) wegen einer Korrektur in zwei Teilen und noch nicht vollständig am Stück. |
 
 ## Noch offen
 
 - **offen:** Vollständigen Durchlauf des Azure-Einrichtungsskripts belegen
   (HZ5 Advanced). Ein vorhandenes Skript ersetzt diesen Nachweis nicht.
-- **offen:** Nach Integration aller Arbeiten die endgültige Version `1.0.0`
-  mit Release, Image, grünem Workflow und geprüfter Azure-App nachtragen.
-  Derzeit ist `0.1.0-rc.2` die geprüfte Vorabversion. Kaito ergänzt den Nachweis
-  nach dem endgültigen Tag.
 
-Die Abgabeform klärt Kaito mit der Lehrperson. Zugangsdaten und `.env` werden
-nicht in der Übersicht veröffentlicht.
+Abgegeben wird diese Dokumentation auf Moodle, mit Link zum Repository.
+Zugangsdaten und `.env` werden nicht in der Übersicht veröffentlicht.
