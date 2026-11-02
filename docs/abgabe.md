@@ -14,9 +14,9 @@ Kaito setzte die Erfassung von Fächern und Noten sowie Azure und die
 Veröffentlichung um ([PR #9](https://github.com/KitoSpammsL2/notenrechner/pull/9),
 [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11),
 [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14)).
-Faruk setzte die Schnittberechnung um und bearbeitet den PostgreSQL-Test
+Faruk setzte die Schnittberechnung und den PostgreSQL-Test um
 ([PR #10](https://github.com/KitoSpammsL2/notenrechner/pull/10),
-[Issue #5](https://github.com/KitoSpammsL2/notenrechner/issues/5)).
+[PR #16](https://github.com/KitoSpammsL2/notenrechner/pull/16)).
 Laurentiu übernahm CSV-Export, Oberfläche, Werkzeugvergleich und diese Übersicht
 ([PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12),
 [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13),
@@ -77,6 +77,9 @@ formatieren mit black, prüfen mit flake8 und pytest und verlangen eine Issue-Nu
 in der Commit-Nachricht. Wir pushen den Branch und öffnen einen PR auf `main`.
 Die [CI](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/ci.yml)
 installiert Python 3.13 und die Pakete und führt flake8, black und pytest aus.
+Seit [PR #16](https://github.com/KitoSpammsL2/notenrechner/pull/16) läuft die
+Testsuite dabei gegen einen PostgreSQL-Service-Container. Lokal verwenden die
+Tests ohne `TEST_DATABASE_URL` weiterhin SQLite im Speicher.
 
 In [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) verlangte Laurentiu
 [eine Korrektur](https://github.com/KitoSpammsL2/notenrechner/pull/11#pullrequestreview-5736139109):
@@ -101,7 +104,8 @@ Im [Workflow-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/414
 sind Tests, Azure, Release und Docker erfolgreich. Das Image wurde gebaut,
 gestartet und vor dem Upload per HTTP geprüft. Der erste Registry-Upload wurde
 abgewiesen; der wiederholte Job war erfolgreich. Die Ursache ist noch ungeklärt.
-Die Vorabversion ist ein Nachweis des Probelaufs, noch keine endgültige Abgabeversion.
+PR #14 ist inzwischen in main integriert. Die Vorabversion ist ein Nachweis
+des Probelaufs, noch keine endgültige Abgabeversion.
 
 ## Nachweise pro Kriterium
 
@@ -132,15 +136,15 @@ Die Vorabversion ist ein Nachweis des Probelaufs, noch keine endgültige Abgabev
 | Werkzeuge der Versionierung kennen (LZ 3.1) | Beginner | [Git, Subversion, GitHub und Artefaktablage erklärt](#entwicklungsumgebung-und-versionierung) |
 | Einen Ablauf für Änderungen beschreiben (LZ 3.2) | Intermediate | [Unser Ablauf](#unser-ablauf) und [README](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md) |
 | Dem Ablauf bei eigenen Änderungen folgen (LZ 3.3) | Intermediate | Laurentius [PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12) und [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13) mit Commits, fremdem Review und Merge; eigenes Review in [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11#pullrequestreview-5736182346) |
-| Artefakte mit Sourcecodeverwaltung anwenden (LZ 3.4) | Advanced | [Release 0.1.0-rc.2](https://github.com/KitoSpammsL2/notenrechner/releases/tag/0.1.0-rc.2), [GHCR-Paket](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner) und [erfolgreicher Build, Containercheck und Upload](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066). **offen:** [Issue #8](https://github.com/KitoSpammsL2/notenrechner/issues/8) ist noch nicht in main integriert. |
+| Artefakte mit Sourcecodeverwaltung anwenden (LZ 3.4) | Advanced | [Release 0.1.0-rc.2](https://github.com/KitoSpammsL2/notenrechner/releases/tag/0.1.0-rc.2), [GHCR-Paket](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner) und [erfolgreicher Build, Containercheck und Upload](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066). Die Umsetzung aus [Issue #8](https://github.com/KitoSpammsL2/notenrechner/issues/8) ist über [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) in main integriert. |
 
 ### HZ4 Automatisierte Integration 20 Prozent
 
 | Kriterium | Stufe | Nachweis |
 |---|---|---|
 | Testfall zu einer Anforderung entwickeln (LZ 4.1) | Beginner | [CSV-Kriterien in Issue #4](https://github.com/KitoSpammsL2/notenrechner/issues/4), [Tests inklusive Fachname mit Komma](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_export.py) und [PR #12 mit dokumentiertem roten Test zuerst](https://github.com/KitoSpammsL2/notenrechner/pull/12) |
-| Tests automatisch ausführen (LZ 4.2) | Intermediate | [Lokale Hooks](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml), [CI-Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/ci.yml) und [erfolgreicher CI-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441296581) |
-| Vollständigen automatisierten Integrationstest umsetzen | Advanced | **offen:** [Issue #5](https://github.com/KitoSpammsL2/notenrechner/issues/5) ist noch nicht in main. Dort fehlen PostgreSQL-Service und der Integrationstest über Erfassen, Schnitt und Export. Die vorhandene [Fixture](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/conftest.py) unterstützt TEST_DATABASE_URL, verwendet ohne diese Variable aber SQLite im Speicher. |
+| Tests automatisch ausführen (LZ 4.2) | Intermediate | [Lokale Hooks](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml), [CI-Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/ci.yml) und [erfolgreicher PostgreSQL-CI-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41442576083) |
+| Vollständigen automatisierten Integrationstest umsetzen | Advanced | [Issue #5](https://github.com/KitoSpammsL2/notenrechner/issues/5) wurde über [PR #16](https://github.com/KitoSpammsL2/notenrechner/pull/16) integriert. Der [Integrationstest](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_integration.py) erfasst Fach und Noten über die Routen und prüft Schnitt und CSV. [Grüner Lauf mit PostgreSQL-Service](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41442576083); die [Fixture](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/conftest.py) verwendet die gesetzte TEST_DATABASE_URL. |
 
 ### HZ5 Automatisiertes Deployment 20 Prozent
 
@@ -148,16 +152,12 @@ Die Vorabversion ist ein Nachweis des Probelaufs, noch keine endgültige Abgabev
 |---|---|---|
 | Funktion eines automatisierten Deployments erklären | Beginner | [Tag, Tests, Secret, Auslieferung und Antwortprüfung am Beispiel](#unser-ablauf) |
 | Automatische Auslieferung einrichten (LZ 5.1) | Intermediate | [Deploy-Workflow](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/deploy.yml), [erfolgreicher Tag-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41440684021) und [laufende App](https://notenrechner-lb324.azurewebsites.net) |
-| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066). **offen:** Das Einrichtungsskript wurde laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) nur in Teilen ausgeführt, nicht einmal vollständig am Stück. Die Integration von [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) in main steht noch aus. |
+| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41441490066); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript wurde laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) nur in Teilen ausgeführt, nicht einmal vollständig am Stück. |
 
 ## Noch offen
 
 - **offen:** Persönliche selbständige Erweiterung der Entwicklungsumgebung
   konkret belegen (HZ2 Advanced).
-- **offen:** Issue #5 mit PostgreSQL-Service, Integrationstest und grünem Lauf
-  in main übernehmen (HZ4 Advanced).
-- **offen:** Issue #8 beziehungsweise PR #14 in main übernehmen und diese
-  Übersicht aktualisieren (HZ3 und HZ5 Advanced).
 - **offen:** Vollständigen Durchlauf des Azure-Einrichtungsskripts belegen
   (HZ5 Advanced). Ein vorhandenes Skript ersetzt diesen Nachweis nicht.
 - **offen:** Nach Integration aller Arbeiten die endgültige Version `1.0.0`
