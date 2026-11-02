@@ -20,7 +20,7 @@ Faruk setzte die Schnittberechnung und den PostgreSQL-Test um
 Laurentiu übernahm CSV-Export, Oberfläche, Werkzeugvergleich und diese Übersicht
 ([PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12),
 [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13),
-[Issue #15](https://github.com/KitoSpammsL2/notenrechner/issues/15)).
+[PR #17](https://github.com/KitoSpammsL2/notenrechner/pull/17)).
 
 ## Was ist DevOps
 
@@ -111,7 +111,10 @@ Die endgültige Version ist [`1.0.0`](https://github.com/KitoSpammsL2/notenrechn
 und Docker beim ersten Versuch erfolgreich. Das [Image](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner)
 ist als `1.0.0` und `latest` abrufbar. In der [App](https://notenrechner-lb324.azurewebsites.net) haben wir danach
 ein Fach mit zwei gewichteten Noten erfasst. Schnitt und CSV-Export zeigen die
-erwarteten Werte.
+erwarteten Werte. Dieses Beispielfach bleibt in der App sichtbar.
+
+Diese Übersicht kam erst nach dem Tag `1.0.0` in `main`. Der Code der App hat
+sich dadurch nicht geändert.
 
 ## Nachweise pro Kriterium
 
@@ -162,8 +165,10 @@ erwarteten Werte.
 
 ## Noch offen
 
-- **offen:** Vollständigen Durchlauf des Azure-Einrichtungsskripts belegen
-  (HZ5 Advanced). Ein vorhandenes Skript ersetzt diesen Nachweis nicht.
+- **offen:** Das Azure-Einrichtungsskript lief wegen einer Korrektur in zwei
+  Teilen und noch nie am Stück (HZ5 Advanced). Die Dienste auf Azure stehen, und
+  die Auslieferung ist mit `1.0.0` belegt, das Skript selbst ist aber in seiner
+  korrigierten Fassung nicht vollständig getestet.
 
 Abgegeben wird diese Dokumentation auf Moodle, mit Link zum Repository.
 Zugangsdaten und `.env` werden nicht in der Übersicht veröffentlicht.
