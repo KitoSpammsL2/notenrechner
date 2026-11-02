@@ -109,8 +109,12 @@ Die endgültige Version ist [`1.0.0`](https://github.com/KitoSpammsL2/notenrechn
 [Workflow-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401) sind Tests, Azure, Release
 und Docker beim ersten Versuch erfolgreich. Das [Image](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner)
 ist als `1.0.0` und `latest` abrufbar. In der [App](https://notenrechner-lb324.azurewebsites.net) haben wir danach
-ein Fach mit zwei gewichteten Noten erfasst. Schnitt und CSV-Export zeigen die
-erwarteten Werte. Dieses Beispielfach bleibt in der App sichtbar.
+das Fach Mathematik mit den Noten 5.0 (Gewicht 1) und 4.0 (Gewicht 2) erfasst.
+Der Schnitt zeigte wie erwartet 4.5 (rechnerisch 4.33, auf halbe Noten gerundet),
+der Gesamtschnitt 4.50, und der CSV-Export enthielt beide Noten. Die App ist
+öffentlich und hat keine Anmeldung, darum können dort seither weitere Einträge
+dazugekommen sein. Denselben Ablauf prüft automatisch der
+[Integrationstest](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_integration.py).
 
 Diese Übersicht kam erst nach dem Tag `1.0.0` in `main`. Der Code der App hat
 sich dadurch nicht geändert.
@@ -135,7 +139,7 @@ sich dadurch nicht geändert.
 |---|---|---|
 | Möglichkeiten der Einrichtung kennen (LZ 2.1) | Beginner | [Erklärung](#entwicklungsumgebung-und-versionierung), [Projektpakete](https://github.com/KitoSpammsL2/notenrechner/blob/main/requirements-dev.txt), [Umgebungsvariablen ohne Geheimnisse](https://github.com/KitoSpammsL2/notenrechner/blob/main/.env.example) |
 | Umgebung nach Anleitung einrichten (LZ 2.2) | Intermediate | [README mit .venv, Installation und Hooks](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md), [Hook-Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml) |
-| Umgebung selbständig einrichten und erweitern | Advanced | Wir haben die Unterrichtsvorlage erweitert: aktualisierte Hook-Versionen (black 26.10.1, flake8 7.5.0, pre-commit-hooks v6.0.0) und automatische Installation beider Hook-Arten durch `default_install_hook_types: [pre-commit, commit-msg]` in der [Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml). Das [README](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md) erklärt Einrichtung und `pre-commit install`. Dass jedes Teammitglied die Umgebung selbst einrichten kann, zeigen wir bei Bedarf mündlich. |
+| Umgebung selbständig einrichten und erweitern | Advanced | Wir haben die Unterrichtsvorlage erweitert: aktualisierte Hook-Versionen (black 26.10.1, flake8 7.5.0, pre-commit-hooks v6.0.0) und automatische Installation beider Hook-Arten durch `default_install_hook_types: [pre-commit, commit-msg]` in der [Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml). Das [README](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md) erklärt Einrichtung und `pre-commit install`. |
 
 ### HZ3 Sourcecode und Artefaktverwaltung 30 Prozent
 
@@ -143,14 +147,14 @@ sich dadurch nicht geändert.
 |---|---|---|
 | Werkzeuge der Versionierung kennen (LZ 3.1) | Beginner | [Git, Subversion, GitHub und Artefaktablage erklärt](#entwicklungsumgebung-und-versionierung) |
 | Einen Ablauf für Änderungen beschreiben (LZ 3.2) | Intermediate | [Unser Ablauf](#unser-ablauf) und [README](https://github.com/KitoSpammsL2/notenrechner/blob/main/README.md) |
-| Dem Ablauf bei eigenen Änderungen folgen (LZ 3.3) | Intermediate | Laurentius [PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12) und [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13) mit Commits, fremdem Review und Merge; eigenes Review in [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11#pullrequestreview-5736182346) |
+| Dem Ablauf bei eigenen Änderungen folgen (LZ 3.3) | Intermediate | **Kaito:** [PR #9](https://github.com/KitoSpammsL2/notenrechner/pull/9), [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) und [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14), Review von [PR #10](https://github.com/KitoSpammsL2/notenrechner/pull/10). **Faruk:** [PR #10](https://github.com/KitoSpammsL2/notenrechner/pull/10) und [PR #16](https://github.com/KitoSpammsL2/notenrechner/pull/16), Review von [PR #9](https://github.com/KitoSpammsL2/notenrechner/pull/9). **Laurentiu:** [PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12), [PR #13](https://github.com/KitoSpammsL2/notenrechner/pull/13) und [PR #17](https://github.com/KitoSpammsL2/notenrechner/pull/17), Review mit Änderungswunsch in [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11#pullrequestreview-5736139109). |
 | Artefakte mit Sourcecodeverwaltung anwenden (LZ 3.4) | Advanced | [Release 1.0.0](https://github.com/KitoSpammsL2/notenrechner/releases/tag/1.0.0), [Vorabversion 0.1.0-rc.2](https://github.com/KitoSpammsL2/notenrechner/releases/tag/0.1.0-rc.2), [GHCR-Paket](https://github.com/KitoSpammsL2/notenrechner/pkgs/container/notenrechner) und [erfolgreicher Build, Containercheck und Upload](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401). Die Umsetzung aus [Issue #8](https://github.com/KitoSpammsL2/notenrechner/issues/8) ist über [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) in main integriert. |
 
 ### HZ4 Automatisierte Integration 20 Prozent
 
 | Kriterium | Stufe | Nachweis |
 |---|---|---|
-| Testfall zu einer Anforderung entwickeln (LZ 4.1) | Beginner | [CSV-Kriterien in Issue #4](https://github.com/KitoSpammsL2/notenrechner/issues/4), [Tests inklusive Fachname mit Komma](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_export.py) und [PR #12 mit dokumentiertem roten Test zuerst](https://github.com/KitoSpammsL2/notenrechner/pull/12) |
+| Testfall zu einer Anforderung entwickeln (LZ 4.1) | Beginner | **Kaito:** [Issue #2](https://github.com/KitoSpammsL2/notenrechner/issues/2), [`tests/test_subjects.py`](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_subjects.py), [PR #9](https://github.com/KitoSpammsL2/notenrechner/pull/9). **Faruk:** [Issue #3](https://github.com/KitoSpammsL2/notenrechner/issues/3), [`tests/test_averages.py`](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_averages.py), [PR #10](https://github.com/KitoSpammsL2/notenrechner/pull/10). **Laurentiu:** [Issue #4](https://github.com/KitoSpammsL2/notenrechner/issues/4), [`tests/test_export.py`](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_export.py), [PR #12](https://github.com/KitoSpammsL2/notenrechner/pull/12). |
 | Tests automatisch ausführen (LZ 4.2) | Intermediate | [Lokale Hooks](https://github.com/KitoSpammsL2/notenrechner/blob/main/.pre-commit-config.yaml), [CI-Konfiguration](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/ci.yml) und [erfolgreicher PostgreSQL-CI-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41442576083) |
 | Vollständigen automatisierten Integrationstest umsetzen | Advanced | [Issue #5](https://github.com/KitoSpammsL2/notenrechner/issues/5) wurde über [PR #16](https://github.com/KitoSpammsL2/notenrechner/pull/16) integriert. Der [Integrationstest](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/test_integration.py) erfasst Fach und Noten über die Routen und prüft Schnitt und CSV. [Grüner Lauf mit PostgreSQL-Service](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41442576083); die [Fixture](https://github.com/KitoSpammsL2/notenrechner/blob/main/tests/conftest.py) verwendet die gesetzte TEST_DATABASE_URL. |
 
