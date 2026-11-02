@@ -2,5 +2,25 @@
 {% block title %}Schnitt{% endblock %}
 {% block content %}
 <h1>Schnitt</h1>
-<p>Hier erscheint der Notenschnitt pro Fach.</p>
+{% if subject_averages %}
+<table>
+  <thead>
+    <tr>
+      <th>Fach</th>
+      <th>Gerundeter Schnitt</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for name, average in subject_averages %}
+    <tr>
+      <td>{{ name }}</td>
+      <td>{{ average if average is not none else "–" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Noch keine Fächer erfasst.</p>
+{% endif %}
+<p>Gesamtschnitt: {% if overall_average is not none %}{{ "%.2f"|format(overall_average) }}{% else %}–{% endif %}</p>
 {% endblock %}
