@@ -1,7 +1,20 @@
 # Notenrechner
 
+![CI](https://github.com/KitoSpammsL2/notenrechner/actions/workflows/ci.yml/badge.svg)
+
 Web-App, in der man Fächer und Noten erfasst und den Notenschnitt sieht.
 LB Modul 324 von Kaito, Faruk und Laurentiu.
+
+## Funktionen
+
+- Fächer und Noten mit Gewichtung erfassen.
+- Den gewichteten Notenschnitt pro Fach anzeigen.
+- Noten als CSV-Datei herunterladen.
+- Bedienung im Browser, auch auf dem Handy.
+
+Die Funktionen werden über die jeweiligen Pull Requests integriert.
+Unser [Werkzeugvergleich](docs/werkzeugvergleich.md) erklärt die Begriffe
+und warum wir GitHub Issues für dieses Projekt empfehlen.
 
 ## Lokal starten
 
@@ -43,7 +56,12 @@ Wir arbeiten nach dem GitHub Flow, direkt auf `main` wird nichts gepusht.
 3. Zuerst den Test schreiben, dann die Funktion.
 4. Committen, die Nachricht nennt das Issue, zum Beispiel `#3 Schnitt berechnen`.
 5. Pushen und einen Pull Request erstellen. Jemand anderes macht das Review.
-6. Mergen, sobald die CI grün ist.
+6. Mergen, sobald jemand anderes zugestimmt hat und die CI grün ist.
+
+Bei Pull Requests auf `main` und Pushes auf `main` startet GitHub Actions
+die CI mit Python 3.13: Abhängigkeiten installieren, flake8, black und
+pytest mit Coverage. Die CI prüft den Code; die Auslieferung nach Azure
+benötigt einen eigenen Deployment-Workflow.
 
 ## Wer arbeitet wo
 
