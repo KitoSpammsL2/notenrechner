@@ -1,0 +1,21 @@
+body {
+  margin: 0 auto;
+  max-width: 48rem;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
