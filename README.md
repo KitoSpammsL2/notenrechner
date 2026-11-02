@@ -12,7 +12,6 @@ LB Modul 324 von Kaito, Faruk und Laurentiu.
 - Noten als CSV-Datei herunterladen.
 - Bedienung im Browser, auch auf dem Handy.
 
-Die Funktionen werden über die jeweiligen Pull Requests integriert.
 Unser [Werkzeugvergleich](docs/werkzeugvergleich.md) erklärt die Begriffe
 und warum wir GitHub Issues für dieses Projekt empfehlen.
 

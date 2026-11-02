@@ -35,8 +35,8 @@ bestehende GitHub-Projekt, keine gemessene Herstellerangabe.
 
 ## Unsere Empfehlung
 
-Wir empfehlen **GitHub Issues** für dieses Projekt. Laurentiu hat vor der
-Empfehlung als eigenen Grund genannt: „Code und Aufgaben an einem Ort“.
+Wir empfehlen **GitHub Issues** für dieses Projekt. Für uns zählt vor allem,
+dass Code und Aufgaben an einem Ort sind.
 Das passt zu unserem vorhandenen Repository, den Issues mit prüfbaren
 Akzeptanzkriterien, der Zuordnung zu Personen und dem Meilenstein `1.0.0`.
 
