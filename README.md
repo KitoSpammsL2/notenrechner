@@ -60,8 +60,29 @@ Wir arbeiten nach dem GitHub Flow, direkt auf `main` wird nichts gepusht.
 
 Bei Pull Requests auf `main` und Pushes auf `main` startet GitHub Actions
 die CI mit Python 3.13: Abhängigkeiten installieren, flake8, black und
-pytest mit Coverage. Die CI prüft den Code; die Auslieferung nach Azure
-benötigt einen eigenen Deployment-Workflow.
+pytest mit Coverage.
+
+## Auslieferung und Versionen
+
+Die App läuft unter <https://notenrechner-lb324.azurewebsites.net>. Die Dienste
+auf Azure legt `infra/setup-azure.sh` an.
+
+Eine neue Version entsteht mit einem Tag:
+
+```bash
+git tag -a 1.0.0 -m "Titel der Version"
+git push origin 1.0.0
+```
+
+Danach läuft `.github/workflows/deploy.yml`. Zuerst laufen flake8 und pytest. Nur
+bei Erfolg wird nach Azure ausgeliefert, ein GitHub Release erstellt und ein
+Docker-Image in die GitHub Container Registry hochgeladen.
+
+Das Image einer Version startet man so und öffnet dann <http://localhost:8000>:
+
+```bash
+docker run --publish 8000:8000 ghcr.io/kitospammsl2/notenrechner:1.0.0
+```
 
 ## Wer arbeitet wo
 
