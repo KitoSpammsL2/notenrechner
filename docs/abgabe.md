@@ -1,8 +1,7 @@
 # Abgabeübersicht Notenrechner
 
 Stand: 2. November 2026. Grundlage: `M324_Bewertungsraster`, Version 1.0,
-mit HZ1 bis HZ5. `offen` kennzeichnet einen fehlenden oder unvollständigen
-Nachweis; eine vorhandene Datei allein beweist noch keine persönliche Kompetenz.
+mit HZ1 bis HZ5.
 
 ## Das Projekt
 
@@ -161,14 +160,18 @@ sich dadurch nicht geändert.
 |---|---|---|
 | Funktion eines automatisierten Deployments erklären | Beginner | [Tag, Tests, Secret, Auslieferung und Antwortprüfung am Beispiel](#unser-ablauf) |
 | Automatische Auslieferung einrichten (LZ 5.1) | Intermediate | [Deploy-Workflow](https://github.com/KitoSpammsL2/notenrechner/blob/main/.github/workflows/deploy.yml), [erfolgreicher Tag-Lauf](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41440684021) und [laufende App](https://notenrechner-lb324.azurewebsites.net) |
-| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf von 1.0.0 mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. **offen:** Das Einrichtungsskript lief laut [PR #11](https://github.com/KitoSpammsL2/notenrechner/pull/11) wegen einer Korrektur in zwei Teilen und noch nicht vollständig am Stück. |
+| Umfassenden Deploymentprozess umsetzen | Advanced | [Azure-Einrichtung als Skript](https://github.com/KitoSpammsL2/notenrechner/blob/main/infra/setup-azure.sh) und [Lauf von 1.0.0 mit Tests, Azure, Release und Image](https://github.com/KitoSpammsL2/notenrechner/actions/runs/41445893401); [PR #14](https://github.com/KitoSpammsL2/notenrechner/pull/14) ist in main integriert. Das Einrichtungsskript lief wegen einer Korrektur in zwei Teilen, siehe [Schwierigkeiten](#schwierigkeiten-bei-der-umsetzung). |
 
-## Noch offen
+## Schwierigkeiten bei der Umsetzung
 
-- **offen:** Das Azure-Einrichtungsskript lief wegen einer Korrektur in zwei
-  Teilen und noch nie am Stück (HZ5 Advanced). Die Dienste auf Azure stehen, und
-  die Auslieferung ist mit `1.0.0` belegt, das Skript selbst ist aber in seiner
-  korrigierten Fassung nicht vollständig getestet.
+- **Azure-Skript:** `infra/setup-azure.sh` brach beim Einrichten zweimal ab, weil
+  sich Optionen der Azure CLI von unseren Angaben unterschieden. Wir korrigierten
+  das Skript und führten die letzten Schritte separat aus. Die Dienste auf Azure
+  stehen, und die Auslieferung ist mit `1.0.0` belegt. In der korrigierten Fassung
+  lief das Skript aber nicht mehr von Anfang bis Ende.
+- **Docker-Upload:** Beim Test-Tag `0.1.0-rc.2` lehnte die Registry den ersten
+  Upload ab, der wiederholte Job war erfolgreich. Bei `1.0.0` trat das nicht mehr
+  auf. Die Ursache kennen wir nicht.
 
 Abgegeben wird diese Dokumentation auf Moodle, mit Link zum Repository.
 Zugangsdaten und `.env` werden nicht in der Übersicht veröffentlicht.
